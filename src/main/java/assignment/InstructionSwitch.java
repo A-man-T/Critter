@@ -6,26 +6,19 @@ public class InstructionSwitch {
             return;
         }
         int i = c.getNextCodeLine();
-        if (i > c.getCode().size()) {
+        if (i > c.getCode().size() || i < 1) {
             return;
         }
         String[] current = ((String) c.getCode().get(i - 1)).split(" ");
         switch (current[0]) {
             case "hop":
-                if (c.getCellContent(Critter.FRONT) == Critter.EMPTY) {
-                    c.hop();
-                }
+                c.hop();
                 i++;
                 c.setNextCodeLine(i);
                 break;
             case "go":
-                try {
-                    c.setNextCodeLine(jumpType(current[1], i, c));
-                    break;
-                } catch (NumberFormatException e) {
-                    System.err.println("Invalid argument for Go command. Must be an integer.");
-                    break;
-                }
+                c.setNextCodeLine(jumpType(current[1], i, c));
+                break;
             case "right":
                 c.right();
                 i++;
@@ -37,22 +30,16 @@ public class InstructionSwitch {
                 c.setNextCodeLine(i);
                 break;
             case "infect":
-                if (c.getCellContent(Critter.FRONT) == Critter.ENEMY) {
-                    if (current.length == 1) {
-                        c.infect();
-                    } else {
-                        c.infect(Integer.parseInt(current[1]));
-                    }
-                    i++;
-                    c.setNextCodeLine(i);
+                if (current.length == 1) {
+                    c.infect();
                 } else {
-                    i++;
-                    c.setNextCodeLine(i);
+                    c.infect(Integer.parseInt(current[1]));
                 }
-                break;
+                i++;
+                c.setNextCodeLine(i);
             case "ifenemy":
                 if (c.getCellContent(Integer.parseInt(current[1])) == Critter.ENEMY) {
-                    c.setNextCodeLine(Integer.parseInt(current[2]));
+                    c.setNextCodeLine(jumpType(current[2], i, c));
                 } else {
                     i++;
                     c.setNextCodeLine(i);
@@ -61,7 +48,7 @@ public class InstructionSwitch {
                 break;
             case "ifempty":
                 if (c.getCellContent(Integer.parseInt(current[1])) == Critter.EMPTY) {
-                    c.setNextCodeLine(Integer.parseInt(current[2]));
+                    c.setNextCodeLine(jumpType(current[2], i, c));
                 } else {
                     i++;
                     c.setNextCodeLine(i);
@@ -70,7 +57,7 @@ public class InstructionSwitch {
                 break;
             case "ifrandom":
                 if (c.ifRandom()) {
-                    c.setNextCodeLine(Integer.parseInt(current[1]));
+                    c.setNextCodeLine(jumpType(current[1], i, c));
                 } else {
                     i++;
                     c.setNextCodeLine(i);
@@ -79,7 +66,7 @@ public class InstructionSwitch {
                 break;
             case "ifhungry":
                 if (c.getHungerLevel() == Critter.HungerLevel.HUNGRY || c.getHungerLevel() == Critter.HungerLevel.STARVING) {
-                    c.setNextCodeLine(Integer.parseInt(current[1]));
+                    c.setNextCodeLine(jumpType(current[1], i, c));
                 } else {
                     i++;
                     c.setNextCodeLine(i);
@@ -88,7 +75,7 @@ public class InstructionSwitch {
                 break;
             case "ifstarving":
                 if (c.getHungerLevel() == Critter.HungerLevel.STARVING) {
-                    c.setNextCodeLine(Integer.parseInt(current[1]));
+                c.setNextCodeLine(jumpType(current[1], i, c));
                 } else {
                     i++;
                     c.setNextCodeLine(i);
@@ -96,16 +83,12 @@ public class InstructionSwitch {
                 executeInstruction(c);
                 break;
             case "eat":
-                if (c.getCellContent(Critter.FRONT) == Critter.ENEMY) {
-                    c.eat();
-                } else {
-                    i++;
-                    c.setNextCodeLine(i);
-                }
+                i++;
+                c.setNextCodeLine(i);
                 break;
             case "ifally":
                 if (c.getCellContent(Integer.parseInt(current[1])) == Critter.ALLY) {
-                    c.setNextCodeLine(Integer.parseInt(current[2]));
+                    c.setNextCodeLine(jumpType(current[2], i, c));
                 } else {
                     i++;
                     c.setNextCodeLine(i);
@@ -114,7 +97,7 @@ public class InstructionSwitch {
                 break;
             case "ifwall":
                 if (c.getCellContent(Integer.parseInt(current[1])) == Critter.WALL) {
-                    c.setNextCodeLine(Integer.parseInt(current[2]));
+                    c.setNextCodeLine(jumpType(current[2], i, c));
                 } else {
                     i++;
                     c.setNextCodeLine(i);
