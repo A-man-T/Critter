@@ -1,0 +1,678 @@
+my2
+write r2 -1
+write r1 0
+write r3 0
+go 12
+go 7
+write r2 -1
+go 9
+write r2 0
+go 11
+write r2 1
+go 2
+inc r3
+ifhungry 15
+go 20
+write r10 100
+iflt r3 r10 18
+go 19
+write r3 100
+inc r3
+ifstarving 22
+go 27
+write r10 300
+iflt r3 r10 25
+go 26
+write r3 300
+inc r3
+ifenemy 0 516
+ifempty 0 30
+go 464
+write r4 100
+ifenemy 180 33
+go 34
+write r4 5
+ifenemy 135 37
+ifenemy 225 37
+go 38
+write r4 4
+ifenemy 90 41
+ifenemy 270 41
+go 42
+write r4 3
+ifenemy 45 45
+ifenemy 315 45
+go 46
+write r4 2
+ifenemy 0 48
+go 49
+write r4 1
+write r5 1000
+ifenemy 0 52
+go 53
+ifangle 0 0 75
+ifenemy 45 55
+go 56
+ifangle 45 45 75
+ifenemy 315 58
+go 59
+ifangle 315 315 75
+ifenemy 90 61
+go 62
+ifangle 90 90 75
+ifenemy 270 64
+go 65
+ifangle 270 270 75
+ifenemy 135 67
+go 68
+ifangle 135 135 75
+ifenemy 225 70
+go 71
+ifangle 225 225 75
+ifenemy 180 73
+go 74
+ifangle 180 180 75
+go 76
+write r5 5
+ifenemy 0 78
+go 79
+ifangle 0 45 125
+ifenemy 0 81
+go 82
+ifangle 0 315 125
+ifenemy 45 84
+go 85
+ifangle 45 90 125
+ifenemy 45 87
+go 88
+ifangle 45 0 125
+ifenemy 315 90
+go 91
+ifangle 315 0 125
+ifenemy 315 93
+go 94
+ifangle 315 270 125
+ifenemy 90 96
+go 97
+ifangle 90 135 125
+ifenemy 90 99
+go 100
+ifangle 90 45 125
+ifenemy 270 102
+go 103
+ifangle 270 315 125
+ifenemy 270 105
+go 106
+ifangle 270 225 125
+ifenemy 135 108
+go 109
+ifangle 135 180 125
+ifenemy 135 111
+go 112
+ifangle 135 90 125
+ifenemy 225 114
+go 115
+ifangle 225 270 125
+ifenemy 225 117
+go 118
+ifangle 225 180 125
+ifenemy 180 120
+go 121
+ifangle 180 225 125
+ifenemy 180 123
+go 124
+ifangle 180 135 125
+go 126
+write r5 4
+ifenemy 0 128
+go 129
+ifangle 0 90 175
+ifenemy 0 131
+go 132
+ifangle 0 270 175
+ifenemy 45 134
+go 135
+ifangle 45 135 175
+ifenemy 45 137
+go 138
+ifangle 45 315 175
+ifenemy 315 140
+go 141
+ifangle 315 45 175
+ifenemy 315 143
+go 144
+ifangle 315 225 175
+ifenemy 90 146
+go 147
+ifangle 90 180 175
+ifenemy 90 149
+go 150
+ifangle 90 0 175
+ifenemy 270 152
+go 153
+ifangle 270 0 175
+ifenemy 270 155
+go 156
+ifangle 270 180 175
+ifenemy 135 158
+go 159
+ifangle 135 225 175
+ifenemy 135 161
+go 162
+ifangle 135 45 175
+ifenemy 225 164
+go 165
+ifangle 225 315 175
+ifenemy 225 167
+go 168
+ifangle 225 135 175
+ifenemy 180 170
+go 171
+ifangle 180 270 175
+ifenemy 180 173
+go 174
+ifangle 180 90 175
+go 176
+write r5 3
+ifenemy 0 178
+go 179
+ifangle 0 135 225
+ifenemy 0 181
+go 182
+ifangle 0 225 225
+ifenemy 45 184
+go 185
+ifangle 45 180 225
+ifenemy 45 187
+go 188
+ifangle 45 270 225
+ifenemy 315 190
+go 191
+ifangle 315 90 225
+ifenemy 315 193
+go 194
+ifangle 315 180 225
+ifenemy 90 196
+go 197
+ifangle 90 225 225
+ifenemy 90 199
+go 200
+ifangle 90 315 225
+ifenemy 270 202
+go 203
+ifangle 270 45 225
+ifenemy 270 205
+go 206
+ifangle 270 135 225
+ifenemy 135 208
+go 209
+ifangle 135 270 225
+ifenemy 135 211
+go 212
+ifangle 135 0 225
+ifenemy 225 214
+go 215
+ifangle 225 0 225
+ifenemy 225 217
+go 218
+ifangle 225 90 225
+ifenemy 180 220
+go 221
+ifangle 180 315 225
+ifenemy 180 223
+go 224
+ifangle 180 45 225
+go 226
+write r5 2
+ifenemy 0 228
+go 229
+ifangle 0 180 251
+ifenemy 45 231
+go 232
+ifangle 45 225 251
+ifenemy 315 234
+go 235
+ifangle 315 135 251
+ifenemy 90 237
+go 238
+ifangle 90 270 251
+ifenemy 270 240
+go 241
+ifangle 270 90 251
+ifenemy 135 243
+go 244
+ifangle 135 315 251
+ifenemy 225 246
+go 247
+ifangle 225 45 251
+ifenemy 180 249
+go 250
+ifangle 180 0 251
+go 252
+write r5 1
+write r10 2
+ifgt r5 r10 464
+write r6 10000
+write r10 0
+ifeq r2 r10 258
+go 364
+ifenemy 45 260
+go 261
+ifangle 45 90 271
+ifenemy 90 263
+go 264
+ifangle 90 135 271
+ifenemy 315 266
+go 267
+ifangle 315 270 271
+ifenemy 270 269
+go 270
+ifangle 270 225 271
+go 272
+write r6 5
+ifenemy 45 274
+go 275
+ifangle 45 135 297
+ifenemy 45 277
+go 278
+ifangle 45 45 297
+ifenemy 90 280
+go 281
+ifangle 90 180 297
+ifenemy 90 283
+go 284
+ifangle 90 90 297
+ifenemy 315 286
+go 287
+ifangle 315 315 297
+ifenemy 315 289
+go 290
+ifangle 315 225 297
+ifenemy 270 292
+go 293
+ifangle 270 270 297
+ifenemy 270 295
+go 296
+ifangle 270 180 297
+go 298
+write r6 4
+ifenemy 45 300
+go 301
+ifangle 45 180 323
+ifenemy 45 303
+go 304
+ifangle 45 0 323
+ifenemy 90 306
+go 307
+ifangle 90 225 323
+ifenemy 90 309
+go 310
+ifangle 90 45 323
+ifenemy 315 312
+go 313
+ifangle 315 0 323
+ifenemy 315 315
+go 316
+ifangle 315 180 323
+ifenemy 270 318
+go 319
+ifangle 270 315 323
+ifenemy 270 321
+go 322
+ifangle 270 135 323
+go 324
+write r6 3
+ifenemy 45 326
+go 327
+ifangle 45 225 349
+ifenemy 45 329
+go 330
+ifangle 45 315 349
+ifenemy 90 332
+go 333
+ifangle 90 270 349
+ifenemy 90 335
+go 336
+ifangle 90 0 349
+ifenemy 315 338
+go 339
+ifangle 315 45 349
+ifenemy 315 341
+go 342
+ifangle 315 135 349
+ifenemy 270 344
+go 345
+ifangle 270 0 349
+ifenemy 270 347
+go 348
+ifangle 270 90 349
+go 350
+write r6 2
+ifenemy 45 352
+go 353
+ifangle 45 270 363
+ifenemy 90 355
+go 356
+ifangle 90 315 363
+ifenemy 315 358
+go 359
+ifangle 315 90 363
+ifenemy 270 361
+go 362
+ifangle 270 45 363
+go 364
+write r6 1
+write r10 1
+ifeq r2 r10 367
+go 425
+ifenemy 45 369
+go 370
+ifangle 45 135 374
+ifenemy 315 372
+go 373
+ifangle 315 225 374
+go 375
+write r6 5
+ifenemy 45 377
+go 378
+ifangle 45 180 388
+ifenemy 45 380
+go 381
+ifangle 45 90 388
+ifenemy 315 383
+go 384
+ifangle 315 270 388
+ifenemy 315 386
+go 387
+ifangle 315 180 388
+go 389
+write r6 4
+ifenemy 45 391
+go 392
+ifangle 45 225 402
+ifenemy 45 394
+go 395
+ifangle 45 45 402
+ifenemy 315 397
+go 398
+ifangle 315 315 402
+ifenemy 315 400
+go 401
+ifangle 315 135 402
+go 403
+write r6 3
+ifenemy 45 405
+go 406
+ifangle 45 270 416
+ifenemy 45 408
+go 409
+ifangle 45 0 416
+ifenemy 315 411
+go 412
+ifangle 315 0 416
+ifenemy 315 414
+go 415
+ifangle 315 90 416
+go 417
+write r6 2
+ifenemy 45 419
+go 420
+ifangle 45 315 424
+ifenemy 315 422
+go 423
+ifangle 315 45 424
+go 425
+write r6 1
+iflt r5 r6 427
+go 464
+ifhungry 429
+go 439
+ifstarving 431
+go 435
+write r10 0
+add r10 r4
+add r4 r10
+add r4 r10
+ifstarving 437
+go 438
+go 439
+add r4 r4
+write r10 100
+iflt r3 r10 442
+go 443
+go 455
+write r10 300
+iflt r3 r10 446
+go 447
+go 451
+write r10 0
+add r10 r5
+add r5 r10
+add r5 r10
+write r10 300
+iflt r3 r10 454
+go 455
+add r5 r5
+iflt r5 r4 566
+write r10 3
+iflt r5 r10 459
+go 460
+ifstarving 566
+write r10 2
+iflt r5 r10 463
+go 464
+ifhungry 566
+ifenemy 45 553
+ifenemy 90 553
+ifenemy 135 553
+ifenemy 315 551
+ifenemy 270 551
+ifenemy 225 551
+ifenemy 180 551
+ifstarving 473
+go 475
+ifstarving 475
+go 478
+write r1 0
+ifempty 0 566
+go 551
+write r10 1
+ifeq r1 r10 481
+go 484
+write r1 2
+ifempty 90 553
+write r1 0
+write r10 2
+ifeq r1 r10 487
+go 489
+write r1 0
+ifempty 45 553
+write r10 0
+ifeq r2 r10 551
+ifempty 0 493
+go 551
+ifwall 180 495
+go 498
+ifwall 135 497
+go 498
+ifwall 90 499
+go 501
+write r1 1
+go 566
+go 516
+write r10 0
+ifeq r1 r10 505
+go 509
+write r1 -3
+ifrandom 508
+go 509
+write r1 3
+write r10 0
+ifgt r1 r10 512
+go 514
+dec r1
+go 551
+inc r1
+go 553
+ifhungry 518
+go 520
+eat
+go 12
+write r4 0
+add r4 r2
+write r10 -1
+ifgt r2 r10 525
+go 526
+ifenemy 0 527
+go 538
+ifangle 0 45 532
+ifangle 0 135 532
+ifangle 0 225 532
+ifangle 0 315 532
+go 538
+write r10 0
+ifeq r4 r10 535
+go 537
+write r4 1
+go 538
+write r4 0
+write r10 -1
+ifeq r4 r10 541
+go 542
+infect 6
+write r10 0
+ifeq r4 r10 545
+go 546
+infect 8
+write r10 1
+ifeq r4 r10 549
+go 550
+infect 10
+go 12
+left
+go 555
+right
+go 555
+write r10 0
+ifeq r2 r10 558
+go 560
+write r2 1
+go 12
+write r10 1
+ifeq r2 r10 563
+go 565
+write r2 0
+go 12
+go 12
+write r3 0
+write r4 0
+write r5 0
+write r6 0
+write r7 0
+write r8 0
+write r9 0
+write r10 0
+ifwall 45 576
+go 577
+write r4 1
+ifwall 315 579
+go 580
+write r5 1
+ifwall 90 582
+go 583
+write r6 1
+ifwall 270 585
+go 586
+write r7 1
+ifwall 135 588
+go 589
+write r8 1
+ifwall 225 591
+go 592
+write r9 1
+hop
+write r10 1
+ifeq r4 r10 596
+go 597
+ifwall 45 603
+ifeq r4 r10 599
+go 600
+go 602
+ifwall 45 602
+go 603
+go 649
+ifeq r5 r10 605
+go 606
+ifwall 315 612
+ifeq r5 r10 608
+go 609
+go 611
+ifwall 315 611
+go 612
+go 649
+ifeq r6 r10 614
+go 615
+ifwall 90 621
+ifeq r6 r10 617
+go 618
+go 620
+ifwall 90 620
+go 621
+go 649
+ifeq r7 r10 623
+go 624
+ifwall 270 630
+ifeq r7 r10 626
+go 627
+go 629
+ifwall 270 629
+go 630
+go 649
+ifeq r8 r10 632
+go 633
+ifwall 135 639
+ifeq r8 r10 635
+go 636
+go 638
+ifwall 135 638
+go 639
+go 649
+ifeq r9 r10 641
+go 642
+ifwall 225 648
+ifeq r9 r10 644
+go 645
+go 647
+ifwall 225 647
+go 648
+go 649
+go 12
+ifeq r4 r10 651
+go 655
+ifwall 90 653
+go 672
+ifwall 135 655
+go 670
+ifeq r5 r10 657
+go 661
+ifwall 270 659
+go 672
+ifwall 225 661
+go 670
+ifeq r6 r10 663
+go 665
+ifwall 135 665
+go 672
+ifeq r7 r10 667
+go 669
+ifwall 225 669
+go 672
+go 12
+write r2 0
+go 12
+write r2 1
+go 12
+eat
+go 674
+left
+go 676

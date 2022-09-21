@@ -29,7 +29,7 @@ public class Interpreter implements CritterInterpreter {
 		name = reader.readLine();
 		String temp = reader.readLine();
 
-		while (!Objects.equals(temp, "")) {
+		while ((temp != null)&&(!Objects.equals(temp, ""))) {
 			if (InstructionCheck.CompileInstructionCheck(temp)) {
 				instructions.add(temp);
 				temp = reader.readLine();
