@@ -19,9 +19,13 @@ public class InstructionSwitch {
                 c.setNextCodeLine(i);
                 break;
             case "go":
-                c.setNextCodeLine(Integer.parseInt(current[1]));
-                executeInstruction(c);
-                break;
+                try {
+                    c.setNextCodeLine(jumpType(current[1], i, c));
+                    break;
+                } catch (NumberFormatException e) {
+                    System.err.println("Invalid argument for Go command. Must be an integer.");
+                    break;
+                }
             case "right":
                 c.right();
                 i++;
@@ -186,6 +190,18 @@ public class InstructionSwitch {
             default:
                 System.err.println("Invalid Command");
                 break;
+        }
+    }
+
+    private static int jumpType(String s, int i, Critter c) {
+        if (s.charAt(0) == '+' || s.charAt(0) == '-') {
+            return i + Integer.parseInt(s);
+        }
+        else if (s.charAt(0) == 'r') {
+            return c.getReg(Integer.parseInt(s.substring(1)));
+        }
+        else {
+            return Integer.parseInt(s);
         }
     }
 }

@@ -25,8 +25,10 @@ public class Interpreter implements CritterInterpreter {
 		BufferedReader reader = new BufferedReader(new FileReader(filename));
 		String name;
 		ArrayList<String> instructions = new ArrayList<>();
+
 		name = reader.readLine();
 		String temp = reader.readLine();
+
 		while (!Objects.equals(temp, "")) {
 			if (InstructionCheck.CompileInstructionCheck(temp)) {
 				instructions.add(temp);
