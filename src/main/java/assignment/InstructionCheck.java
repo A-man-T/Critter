@@ -72,7 +72,4 @@ public class InstructionCheck {
         return false;
     }
 
-    public static boolean IndexCheck(int i) {
-
-    }
 }

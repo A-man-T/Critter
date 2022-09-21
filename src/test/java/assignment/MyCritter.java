@@ -4,34 +4,46 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyCritter implements Critter{
-    private ArrayList<String> instructions = new ArrayList<>();
+    public ArrayList<String> instructions = new ArrayList<>();
+    private List code;
+    private int i=1;
+    public MyCritter(List i){
+        this.code = i;
+
+    }
+
     @Override
     public List getCode() {
-        return null;
+        return code;
     }
 
     @Override
     public int getNextCodeLine() {
-        return 0;
+
+        return i;
     }
 
     @Override
     public void setNextCodeLine(int i) {
+        this.i = i;
 
     }
 
     @Override
     public int getReg(int i) {
+        instructions.add("getReg");
         return 0;
     }
 
     @Override
     public void setReg(int i, int i1) {
+        instructions.add("setReg");
 
     }
 
     @Override
     public HungerLevel getHungerLevel() {
+        instructions.add("getHungerLevel");
         return null;
     }
 
@@ -66,22 +78,25 @@ public class MyCritter implements Critter{
 
     @Override
     public void infect(int i) {
-        instructions.add("infect " + i);
+        instructions.add("infect");
 
     }
 
     @Override
     public int getCellContent(int i) {
+        instructions.add("getCellContent");
         return 0;
     }
 
     @Override
     public int getOffAngle(int i) {
+        instructions.add("getOffAngle");
         return 0;
     }
 
     @Override
     public boolean ifRandom() {
+        instructions.add("ifrandom");
         return false;
     }
 }
