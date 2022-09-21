@@ -25,7 +25,7 @@ public class MyCritter implements Critter{
 
     @Override
     public void setNextCodeLine(int i) {
-        this.i = i;
+        this.i++;
 
     }
 

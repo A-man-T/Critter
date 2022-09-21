@@ -14,10 +14,13 @@ class test {
         Interpreter i = new Interpreter();
         //Interpreter.loadSpecies();
 
-       CritterSpecies cs = i.loadSpecies("species/AmanTrap.cri");
-       Critter hello = new MyCritter(cs.getCode());
-       i.executeCritter(hello);
-       System.out.print(((MyCritter) hello).instructions);
+       CritterSpecies cs = i.loadSpecies("species/FlyTrap.cri");
+       MyCritter hello = new MyCritter(cs.getCode());
+
+       for (int a = 0; a < 100; a++) {
+           i.executeCritter(hello);
+           System.out.println(( hello).instructions);
+       }
 
 
     }
