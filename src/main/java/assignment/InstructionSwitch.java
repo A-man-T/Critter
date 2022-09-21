@@ -90,6 +90,7 @@ public class InstructionSwitch {
                     }
 
                 case "eat":
+                    c.eat();
                     i++;
                     c.setNextCodeLine(i);
                     return;
