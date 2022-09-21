@@ -30,12 +30,11 @@ public class Interpreter implements CritterInterpreter {
 		String temp = reader.readLine();
 
 		while ((temp != null)&&(!Objects.equals(temp, ""))) {
-			if (InstructionCheck.CompileInstructionCheck(temp)) {
+			if (InstructionCheck.CompileInstructionCheck(temp) && InstructionCheck.NumChecks(temp)) {
 				instructions.add(temp);
 				temp = reader.readLine();
 			} else {
-				System.err.println("Invalid command detected for " + name + "-type critters.");
-				return new CritterSpecies(name, null);
+				return null;
 			}
 		}
 		return new CritterSpecies(name, instructions);

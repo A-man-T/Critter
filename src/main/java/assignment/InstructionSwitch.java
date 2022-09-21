@@ -2,9 +2,7 @@ package assignment;
 
 public class InstructionSwitch {
     public static void executeInstruction(Critter c) {
-        if (c.getCode() == null) {
-            return;
-        }
+
         while (true) {
             int i = c.getNextCodeLine();
             if (i > c.getCode().size() || i < 1) {
@@ -12,181 +10,192 @@ public class InstructionSwitch {
             }
             String[] current = ((String) c.getCode().get(i - 1)).split(" ");
             switch (current[0]) {
-                case "hop":
+                case "hop" -> {
+
                     c.hop();
                     i++;
                     c.setNextCodeLine(i);
                     return;
-                case "go":
+                }
+                case "go" -> {
+
                     c.setNextCodeLine(jumpType(current[1], i, c));
-                    break;
-                case "right":
+                }
+                case "right" -> {
+
                     c.right();
                     i++;
                     c.setNextCodeLine(i);
                     return;
-                case "left":
+                }
+                case "left" -> {
+
                     c.left();
                     i++;
                     c.setNextCodeLine(i);
                     return;
-                case "infect":
+                }
+                case "infect" -> {
+
                     if (current.length == 1) {
                         c.infect();
                     } else {
-                        c.infect(Integer.parseInt(current[1]));
+                        c.infect(jumpType(current[1], i, c));
                     }
                     i++;
                     c.setNextCodeLine(i);
                     return;
-                case "ifenemy":
+                }
+                case "ifenemy" -> {
                     if (c.getCellContent(Integer.parseInt(current[1])) == Critter.ENEMY) {
                         c.setNextCodeLine(jumpType(current[2], i, c));
-                        break;
                     } else {
                         i++;
                         c.setNextCodeLine(i);
-                        break;
                     }
-
-                case "ifempty":
+                }
+                case "ifempty" -> {
                     if (c.getCellContent(Integer.parseInt(current[1])) == Critter.EMPTY) {
                         c.setNextCodeLine(jumpType(current[2], i, c));
-                        break;
                     } else {
                         i++;
                         c.setNextCodeLine(i);
-                        break;
                     }
-
-                case "ifrandom":
+                }
+                case "ifrandom" -> {
                     if (c.ifRandom()) {
                         c.setNextCodeLine(jumpType(current[1], i, c));
-                        break;
+                        ;
                     } else {
                         i++;
                         c.setNextCodeLine(i);
-                        break;
+                        ;
                     }
-
-                case "ifhungry":
+                }
+                case "ifhungry" -> {
                     if (c.getHungerLevel() == Critter.HungerLevel.HUNGRY || c.getHungerLevel() == Critter.HungerLevel.STARVING) {
                         c.setNextCodeLine(jumpType(current[1], i, c));
-                        break;
+                        ;
                     } else {
                         i++;
                         c.setNextCodeLine(i);
-                        break;
+                        ;
                     }
-
-                case "ifstarving":
+                }
+                case "ifstarving" -> {
                     if (c.getHungerLevel() == Critter.HungerLevel.STARVING) {
                         c.setNextCodeLine(jumpType(current[1], i, c));
-                        break;
                     } else {
                         i++;
                         c.setNextCodeLine(i);
-                        break;
                     }
+                }
+                case "eat" -> {
 
-                case "eat":
                     c.eat();
                     i++;
                     c.setNextCodeLine(i);
                     return;
-                case "ifally":
+                }
+                case "ifally" -> {
+
                     if (c.getCellContent(Integer.parseInt(current[1])) == Critter.ALLY) {
                         c.setNextCodeLine(jumpType(current[2], i, c));
-                        break;
+                        ;
                     } else {
                         i++;
                         c.setNextCodeLine(i);
-                        break;
+                        ;
                     }
+                }
+                case "ifwall" -> {
 
-                case "ifwall":
                     if (c.getCellContent(Integer.parseInt(current[1])) == Critter.WALL) {
                         c.setNextCodeLine(jumpType(current[2], i, c));
-                        break;
+                        ;
                     } else {
                         i++;
                         c.setNextCodeLine(i);
-                        break;
+                        ;
                     }
+                }
+                case "ifangle" -> {
 
-                case "ifangle":
                     if (c.getOffAngle(Integer.parseInt(current[1])) == Integer.parseInt(current[2])) {
-                        c.setNextCodeLine(Integer.parseInt(current[3]));
-                        break;
-                    } else {
-                        i++;
-                        c.setNextCodeLine(i);
-                        break;
-                    }
-
-                case "write":
-                    c.setReg(Integer.parseInt(current[1]), Integer.parseInt(current[2]));
-                    i++;
-                    c.setNextCodeLine(i);
-
-                    break;
-                case "add":
-                    c.setReg(Integer.parseInt(current[1]), c.getReg(Integer.parseInt(current[1])) + c.getReg(Integer.parseInt(current[2])));
-                    i++;
-                    c.setNextCodeLine(i);
-
-                    break;
-                case "sub":
-                    c.setReg(Integer.parseInt(current[1]), c.getReg(Integer.parseInt(current[1])) - c.getReg(Integer.parseInt(current[2])));
-                    i++;
-                    c.setNextCodeLine(i);
-
-                    break;
-                case "inc":
-                    c.setReg(Integer.parseInt(current[1]), c.getReg(Integer.parseInt(current[1])) + 1);
-                    i++;
-                    c.setNextCodeLine(i);
-
-                    break;
-                case "dec":
-                    c.setReg(Integer.parseInt(current[1]), c.getReg(Integer.parseInt(current[1])) - 1);
-                    i++;
-                    c.setNextCodeLine(i);
-
-                    break;
-                case "iflt":
-                    if (c.getReg(Integer.parseInt(current[1])) < c.getReg(Integer.parseInt(current[2]))) {
                         c.setNextCodeLine(jumpType(current[3], i, c));
-                        break;
+                        ;
                     } else {
                         i++;
                         c.setNextCodeLine(i);
-                        break;
+                        ;
                     }
+                }
+                case "write" -> {
 
-                case "ifleq":
-                    if (c.getReg(Integer.parseInt(current[1])) == c.getReg(Integer.parseInt(current[2]))) {
+                    c.setReg(Integer.parseInt(noWhitespace(current[1])), Integer.parseInt(current[2]));
+                    i++;
+                    c.setNextCodeLine(i);
+                }
+                case "add" -> {
+
+                    c.setReg(Integer.parseInt(noWhitespace(current[1])), c.getReg(Integer.parseInt(noWhitespace(current[1]))) + c.getReg(Integer.parseInt(noWhitespace(current[2]))));
+                    i++;
+                    c.setNextCodeLine(i);
+                }
+                case "sub" -> {
+
+                    c.setReg(Integer.parseInt(noWhitespace(current[1])), c.getReg(Integer.parseInt(noWhitespace(current[1]))) - c.getReg(Integer.parseInt(noWhitespace(current[2]))));
+                    i++;
+                    c.setNextCodeLine(i);
+                }
+                case "inc" -> {
+
+                    c.setReg(Integer.parseInt(noWhitespace(current[1])), c.getReg(Integer.parseInt(noWhitespace(current[1]))) + 1);
+                    i++;
+                    c.setNextCodeLine(i);
+                }
+                case "dec" -> {
+
+                    c.setReg(Integer.parseInt(noWhitespace(current[1])), c.getReg(Integer.parseInt(noWhitespace(current[1]))) - 1);
+                    i++;
+                    c.setNextCodeLine(i);
+                }
+                case "iflt" -> {
+
+                    if (c.getReg(Integer.parseInt(noWhitespace(current[1]))) < c.getReg(Integer.parseInt(noWhitespace(current[2])))) {
                         c.setNextCodeLine(jumpType(current[3], i, c));
-                        break;
+                        ;
                     } else {
                         i++;
                         c.setNextCodeLine(i);
-                        break;
+                        ;
                     }
+                }
+                case "ifeq" -> {
 
-                case "ifgt":
-                    if (c.getReg(Integer.parseInt(current[1])) > c.getReg(Integer.parseInt(current[2]))) {
+                    if (c.getReg(Integer.parseInt(noWhitespace(current[1]))) == c.getReg(Integer.parseInt(noWhitespace(current[2])))) {
                         c.setNextCodeLine(jumpType(current[3], i, c));
-                        break;
+                        ;
                     } else {
                         i++;
                         c.setNextCodeLine(i);
-                        break;
+                        ;
                     }
+                }
+                case "ifgt" -> {
 
-                default:
-                    System.err.println("Invalid Command");
-                    break;
+                    if (c.getReg(Integer.parseInt(noWhitespace(current[1]))) > c.getReg(Integer.parseInt(noWhitespace(current[2])))) {
+                        c.setNextCodeLine(jumpType(current[3], i, c));
+                        ;
+                    } else {
+                        i++;
+                        c.setNextCodeLine(i);
+                        ;
+                    }
+                }
+                default -> {
+                    
+                }
             }
         }
     }
@@ -201,5 +210,12 @@ public class InstructionSwitch {
         else {
             return Integer.parseInt(s);
         }
+    }
+
+    private static String noWhitespace(String s) {
+        if (!Character.isDigit(s.charAt(0))) {
+            return s.substring(1);
+        }
+        return s;
     }
 }
