@@ -1,8 +1,5 @@
 AmanTrap
-infect
-hop
-go 1.1
-
+ifhungry 1
 
 The flytrap sits in one place and spins.
 It infects anything which comes in front of it.
