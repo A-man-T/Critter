@@ -28,7 +28,7 @@ class test {
     @Test
     void checkCommands() throws IOException {
         //set up MyCritter
-        String filepath = "species/my2.cri";
+        String filepath = "species/AmanTrap.cri";
         Interpreter i = new Interpreter();
         CritterSpecies cs = i.loadSpecies(filepath);
         if(cs==null) {
@@ -94,10 +94,10 @@ class test {
         }
 
 
-        for (int a = 0; a < 100; a++) {
+        for (int a = 0; a < 1000; a++) {
             i.executeCritter(mc);
         }
-        System.out.println(parsedinstructions);
+
         System.out.println(cutInstructions);
         System.out.println(mc.instructions);
         assertEquals(mc.instructions,cutInstructions);
