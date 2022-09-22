@@ -1,6 +1,5 @@
 AmanTrap
-go -5
-hop 1
+go 10 10
 
 
 The flytrap sits in one place and spins.

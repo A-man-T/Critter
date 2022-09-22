@@ -74,8 +74,14 @@ public class InstructionCheck {
 
     public static boolean NumChecks(String s) {
         String[] command = (s.split(" "));
+        if (command[0].equals("hop")) {
+            if (command.length != 1) {
+                return false;
+            }
+        }
+
         if (command[0].equals("infect")) {
-            if (command.length > 1) {
+            if (command.length != 1) {
                 try {
                     Integer.parseInt(noWhitespace(command[1]));
                 } catch (NumberFormatException e) {
@@ -87,7 +93,7 @@ public class InstructionCheck {
             }
         }
         if (command[0].equals("ifally")) {
-            if (3 > command.length) {
+            if (3 != command.length) {
                 return false;
             }
             try {
@@ -104,7 +110,7 @@ public class InstructionCheck {
             }
         }
         if (command[0].equals("ifenemy")) {
-            if (3 > command.length) {
+            if (3 != command.length) {
                 return false;
             }
             try {
@@ -121,7 +127,7 @@ public class InstructionCheck {
             }
         }
         if (command[0].equals("ifrandom")) {
-            if (2 > command.length) {
+            if (2 != command.length) {
                 return false;
             }
             try {
@@ -134,7 +140,7 @@ public class InstructionCheck {
             }
         }
         if (command[0].equals("go")) {
-            if (2 > command.length) {
+            if (2 != command.length) {
                 return false;
             }
             try {
@@ -147,7 +153,7 @@ public class InstructionCheck {
             }
         }
         if (command[0].equals("ifstarving")) {
-            if (2 > command.length) {
+            if (2 != command.length) {
                 return false;
             }
             try {
@@ -160,7 +166,7 @@ public class InstructionCheck {
             }
         }
         if (command[0].equals("ifangle")) {
-            if (4 > command.length) {
+            if (4 != command.length) {
                 return false;
             }
             try {
@@ -178,7 +184,7 @@ public class InstructionCheck {
             }
         }
         if (command[0].equals("ifempty")) {
-            if (3 > command.length) {
+            if (3 != command.length) {
                 return false;
             }
             try {
@@ -195,7 +201,7 @@ public class InstructionCheck {
             }
         }
         if (command[0].equals("ifwall")) {
-            if (3 > command.length) {
+            if (3 != command.length) {
                 return false;
             }
             try {
@@ -212,7 +218,7 @@ public class InstructionCheck {
             }
         }
         if (command[0].equals("write")) {
-            if (3 > command.length) {
+            if (3 != command.length) {
                 return false;
             }
             try {
@@ -223,7 +229,7 @@ public class InstructionCheck {
             }
         }
         if (command[0].equals("add")) {
-            if (3 > command.length) {
+            if (3 != command.length) {
                 return false;
             }
             try {
@@ -234,7 +240,7 @@ public class InstructionCheck {
             }
         }
         if (command[0].equals("sub")) {
-            if (3 > command.length) {
+            if (3 != command.length) {
                 return false;
             }
             try {
@@ -245,7 +251,7 @@ public class InstructionCheck {
             }
         }
         if (command[0].equals("inc")) {
-            if (2 > command.length) {
+            if (2 != command.length) {
                 return false;
             }
             try {
@@ -255,7 +261,7 @@ public class InstructionCheck {
             }
         }
         if (command[0].equals("dec")) {
-            if (2 > command.length) {
+            if (2 != command.length) {
                 return false;
             }
             try {
@@ -265,7 +271,7 @@ public class InstructionCheck {
             }
         }
         if (command[0].equals("iflt")) {
-            if (4 > command.length) {
+            if (4 != command.length) {
                 return false;
             }
             try {
@@ -280,7 +286,7 @@ public class InstructionCheck {
             }
         }
         if (command[0].equals("ifeq")) {
-            if (4 > command.length) {
+            if (4 != command.length) {
                 return false;
             }
             try {
@@ -295,7 +301,7 @@ public class InstructionCheck {
             }
         }
         if (command[0].equals("ifgt")) {
-            if (4 > command.length) {
+            if (4 != command.length) {
                 return false;
             }
             try {
@@ -310,7 +316,7 @@ public class InstructionCheck {
             }
         }
         if (command[0].equals("ifhungry")) {
-            if (2 > command.length) {
+            if (2 != command.length) {
                 return false;
             }
             try {
