@@ -1,8 +1,16 @@
 AmanTrap
-dec r1
-inc r1
+ifenemy 0 8
+ifempty 0 5
+left
+go 1
+hop
+go 1
+ifhungry 10
+infect
+go 1
+eat
+go 1
 
 
-The flytrap sits in one place and spins.
-It infects anything which comes in front of it.
-Flytraps do well when they clump.
+This critter hops in a straight line until it is blocked, infecting any
+enemies that it sees.  When it can't move forward it turns.

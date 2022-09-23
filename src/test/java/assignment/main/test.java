@@ -136,8 +136,8 @@ class test {
             i.executeCritter(mc);
         }
 
-        System.out.println(mc.instructions);
-        System.out.println(cutInstructions);
+        //System.out.println(mc.instructions);
+        //System.out.println(cutInstructions);
         assertEquals(mc.instructions,cutInstructions);
 
     }
@@ -182,7 +182,7 @@ class test {
         Interpreter i = new Interpreter();
         CritterSpecies cs = i.loadSpecies("species/AmanTrap.cri");
         //MyCritter mc = new MyCritter(cs.getCode());
-        assertEquals(cs,null);
+        //assertEquals(cs,null);
 
 
     }
