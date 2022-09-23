@@ -23,10 +23,14 @@ public class Interpreter implements CritterInterpreter {
 
 	public CritterSpecies loadSpecies(String filename) throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(filename));
+
 		String name;
 		ArrayList<String> instructions = new ArrayList<>();
 
 		name = reader.readLine();
+		if (name == null || name.length() == 0) {
+			return null;
+		}
 		String temp = reader.readLine();
 
 		while ((temp != null)&&(!Objects.equals(temp, ""))) {
