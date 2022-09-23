@@ -33,14 +33,14 @@ public class MyCritter implements Critter{
 
     @Override
     public int getReg(int i) {
-        instructions.add("getReg");
+        instructions.add("getReg" + i);
         registers.add(i);
         return 0;
     }
 
     @Override
     public void setReg(int i, int i1) {
-        instructions.add("setReg");
+        instructions.add("setReg"+i+i1);
         registers.add(i);
 
 
@@ -83,21 +83,21 @@ public class MyCritter implements Critter{
 
     @Override
     public void infect(int i) {
-        instructions.add("infect");
+        instructions.add("infect"+i);
         registers.add(i);
 
     }
 
     @Override
     public int getCellContent(int i) {
-        instructions.add("getCellContent");
+        instructions.add("getCellContent"+i);
         registers.add(i);
         return 0;
     }
 
     @Override
     public int getOffAngle(int i) {
-        instructions.add("getOffAngle");
+        instructions.add("getOffAngle"+i);
         registers.add(i);
         return 0;
     }

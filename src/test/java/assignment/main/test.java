@@ -17,19 +17,19 @@ class test {
     @Test
     void testCritterCreation() throws IOException {
         Interpreter i = new Interpreter();
-       CritterSpecies cs = i.loadSpecies("species/my2.cri");
-       MyCritter mc = new MyCritter(cs.getCode());
+        CritterSpecies cs = i.loadSpecies("species/my2.cri");
+        MyCritter mc = new MyCritter(cs.getCode());
 
-       for (int a = 0; a < 100; a++) {
+        for (int a = 0; a < 100; a++) {
            i.executeCritter(mc);
            //System.out.println((mc).instructions);
        }
     }
     @Test
     //This method no longer tests loadspecies
-    void checkInterpreterExceptGo() throws IOException {
+    void checkInterpreter() throws IOException {
         //set up MyCritter
-        String filepath = "species/AmanTrap.cri";
+        String filepath = "species/my2.cri";
         Interpreter i = new Interpreter();
         CritterSpecies cs = i.loadSpecies(filepath);
         if(cs==null) {
@@ -55,54 +55,77 @@ class test {
          go to cut below
          */
         ArrayList<String> cutInstructions = new ArrayList<>();
-        ArrayList<Integer> nums = new ArrayList<>();
+        //ArrayList<Integer> nums = new ArrayList<>();
         String[] current;
         for(int index =0; index<parsedinstructions.size();index++) {
             current = ((parsedinstructions.get(index).split(" ")));
-            if((current[0].equals("go")))
+            if((current[0].equals("go"))) {
+                if (current[1].charAt(0) == 'r')
+                    cutInstructions.add("getReg"+current[1].substring(1));
                 continue;
-            for(int iter = 1; iter<current.length;iter++) {
-                if (current[iter].charAt(0) == 'r')
-                     nums.add(Integer.parseInt(current[iter].substring(1)));
-                else {
-                    nums.add(Integer.parseInt(current[iter]));
-                }
-
             }
             //else if
-            if(current[0].equals("ifhungry")||current[0].equals("ifstarving")) {
+            else if(current[0].equals("ifhungry")||current[0].equals("ifstarving")) {
                 cutInstructions.add("getHungerLevel");
-                if(current[0].equals("ifhungry"))
+                if (current[1].charAt(0) == 'r')
+                    cutInstructions.add("getReg"+current[1].substring(1));
+                if(current[0].equals("ifhungry")) {
                     cutInstructions.add("getHungerLevel");
+                    if (current[1].charAt(0) == 'r')
+                        cutInstructions.add("getReg"+current[1].substring(1));
+                }
+
                 continue;
             }
             else if(current[0].equals("ifenemy")||current[0].equals("ifempty")||current[0].equals("ifally")||current[0].equals("ifwall")) {
-                cutInstructions.add("getCellContent");
+                cutInstructions.add("getCellContent"+current[1]);
+                if (current[2].charAt(0) == 'r')
+                    cutInstructions.add("getReg"+current[1].substring(1));
                 continue;
             }
             else if(current[0].equals("ifangle")){
-                cutInstructions.add("getOffAngle");
+                cutInstructions.add("getOffAngle"+current[1]);
+                if (current[3].charAt(0) == 'r')
+                    cutInstructions.add("getReg"+current[1].substring(1));
                 continue;
             }
             else if(current[0].equals("write")){
-                cutInstructions.add("setReg");
+                cutInstructions.add("setReg"+current[1].substring(1)+current[2]);
                 continue;
             }
             else if(current[0].equals("add")||current[0].equals("sub")){
-                cutInstructions.add("getReg");
-                cutInstructions.add("getReg");
-                cutInstructions.add("setReg");
+                cutInstructions.add("getReg"+current[1].substring(1));
+                cutInstructions.add("getReg"+current[2].substring(1));
+                cutInstructions.add("setReg"+current[1].substring(1)+0);
                 continue;
             }
             else if(current[0].equals("inc")||current[0].equals("dec")){
-                cutInstructions.add("getReg");
-                cutInstructions.add("setReg");
+                cutInstructions.add("getReg"+current[1].substring(1));
+                if(current[0].equals("inc"))
+                    cutInstructions.add("setReg"+current[1].substring(1)+1);
+                else
+                    cutInstructions.add("setReg"+current[1].substring(1)+"-1");
                 continue;
             }
             else if(current[0].equals("iflt")||current[0].equals("ifeq")||current[0].equals("ifgt")){
-                cutInstructions.add("getReg");
-                cutInstructions.add("getReg");
+                cutInstructions.add("getReg"+current[1].substring(1));
+                cutInstructions.add("getReg"+current[2].substring(1));
+                if (current[3].charAt(0) == 'r')
+                    cutInstructions.add("getReg"+current[3].substring(1));
                 continue;
+            }
+            else if(current[0].equals("infect")&&current.length!=1) {
+                if (current[1].charAt(0) == 'r')
+                    cutInstructions.add("getReg"+current[1].substring(1));
+                else {
+                    cutInstructions.add("infect"+current[1]);
+                    continue;
+                }
+            }
+            else if(current[0].equals("ifrandom")&&current.length!=1) {
+                if (current[1].charAt(0) == 'r')
+                    cutInstructions.add("getReg" + current[1].substring(1));
+
             }
 
             cutInstructions.add(current[0]);
@@ -113,10 +136,8 @@ class test {
             i.executeCritter(mc);
         }
 
-        //System.out.println(nums);
-        //System.out.println(mc.registers);
-        //System.out.println(cutInstructions);
-        //System.out.println(mc.instructions);
+        System.out.println(mc.instructions);
+        System.out.println(cutInstructions);
         assertEquals(mc.instructions,cutInstructions);
 
     }
@@ -158,6 +179,10 @@ class test {
 
     @Test
     void inputValidation() throws IOException {
+        Interpreter i = new Interpreter();
+        CritterSpecies cs = i.loadSpecies("species/AmanTrap.cri");
+        //MyCritter mc = new MyCritter(cs.getCode());
+        assertEquals(cs,null);
 
 
     }
