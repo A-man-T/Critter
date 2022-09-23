@@ -1,15 +1,18 @@
 Wow this critter is amazing!
-ifenemy 0 8
-ifempty 0 5
+ifenemy 0 10
+ifenemy 45 14
+ifenemy 315 5
+ifempty 0 7
 left
 go 1
 hop
 go 1
-ifhungry 10
+ifhungry 12
 infect
 go 1
 eat
 go 1
-
+right
+go 1
 
 This critter IS REALLY GOOD!

@@ -112,7 +112,7 @@ public class InstructionCheck {
             } catch (NumberFormatException e) {
                 return false;
             }
-            if (Integer.parseInt(command[1]) % 45 != 0) {
+            if (!validAngle(Integer.parseInt(command[1]))) {
                 return false;
             }
             if (!validRegister(command[2])) {
@@ -129,7 +129,7 @@ public class InstructionCheck {
             } catch (NumberFormatException e) {
                 return false;
             }
-            if (Integer.parseInt(command[1]) % 45 != 0) {
+            if (!validAngle(Integer.parseInt(command[1]))) {
                 return false;
             }
             if (!validRegister(command[2])) {
@@ -186,7 +186,7 @@ public class InstructionCheck {
             } catch (NumberFormatException e) {
                 return false;
             }
-            if (Integer.parseInt(command[1]) % 45 != 0 || Integer.parseInt(command[2]) % 45 != 0) {
+            if (!validAngle(Integer.parseInt(command[1])) || !validAngle(Integer.parseInt(command[2]))) {
                 return false;
             }
             if (!validRegister(command[3])) {
@@ -203,7 +203,7 @@ public class InstructionCheck {
             } catch (NumberFormatException e) {
                 return false;
             }
-            if (Integer.parseInt(command[1]) % 45 != 0) {
+            if (!validAngle(Integer.parseInt(command[1]))) {
                 return false;
             }
             if (!validRegister(command[2])) {
@@ -220,7 +220,7 @@ public class InstructionCheck {
             } catch (NumberFormatException e) {
                 return false;
             }
-            if (Integer.parseInt(command[1]) % 45 != 0) {
+            if (!validAngle(Integer.parseInt(command[1]))) {
                 return false;
             }
             if (!validRegister(command[2])) {
@@ -362,6 +362,11 @@ public class InstructionCheck {
             }
         }
         return true;
+    }
+
+    // check if a bearing is a multiple of 45 and is in a valid range
+    private static boolean validAngle(int i) {
+        return i % 45 == 0 && i >= 0 && i <= 315;
     }
 
 }
