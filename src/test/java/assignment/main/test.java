@@ -27,9 +27,9 @@ class test {
     }
     @Test
     //This method no longer tests loadspecies
-    void checkInerpreter() throws IOException {
+    void checkInterpreterExceptGo() throws IOException {
         //set up MyCritter
-        String filepath = "species/my2.cri";
+        String filepath = "species/AmanTrap.cri";
         Interpreter i = new Interpreter();
         CritterSpecies cs = i.loadSpecies(filepath);
         if(cs==null) {
@@ -55,13 +55,22 @@ class test {
          go to cut below
          */
         ArrayList<String> cutInstructions = new ArrayList<>();
-
+        ArrayList<Integer> nums = new ArrayList<>();
         String[] current;
         for(int index =0; index<parsedinstructions.size();index++) {
             current = ((parsedinstructions.get(index).split(" ")));
             if((current[0].equals("go")))
                 continue;
-            else if(current[0].equals("ifhungry")||current[0].equals("ifstarving")) {
+            for(int iter = 1; iter<current.length;iter++) {
+                if (current[iter].charAt(0) == 'r')
+                     nums.add(Integer.parseInt(current[iter].substring(1)));
+                else {
+                    nums.add(Integer.parseInt(current[iter]));
+                }
+
+            }
+            //else if
+            if(current[0].equals("ifhungry")||current[0].equals("ifstarving")) {
                 cutInstructions.add("getHungerLevel");
                 if(current[0].equals("ifhungry"))
                     cutInstructions.add("getHungerLevel");
@@ -104,6 +113,8 @@ class test {
             i.executeCritter(mc);
         }
 
+        System.out.println(nums);
+        System.out.println(mc.registers);
         //System.out.println(cutInstructions);
         //System.out.println(mc.instructions);
         assertEquals(mc.instructions,cutInstructions);
