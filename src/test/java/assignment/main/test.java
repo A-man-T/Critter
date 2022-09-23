@@ -186,4 +186,13 @@ class test {
 
 
     }
+    @Test
+    void Jump() throws IOException {
+        Interpreter i = new Interpreter();
+        CritterSpecies cs = i.loadSpecies("species/my2.cri");
+        MyCritter mc = new MyCritter(cs.getCode());
+        //assertEquals(InstructionSwitch.jumpType("-5",5,mc),0);
+
+
+    }
 }
