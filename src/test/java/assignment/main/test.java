@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class test {
     @Test
-    void baseTestCode() throws IOException {
+    void testCritterCreation() throws IOException {
         Interpreter i = new Interpreter();
        CritterSpecies cs = i.loadSpecies("species/my2.cri");
        MyCritter mc = new MyCritter(cs.getCode());
@@ -33,7 +33,7 @@ class test {
         Interpreter i = new Interpreter();
         CritterSpecies cs = i.loadSpecies(filepath);
         if(cs==null) {
-            System.out.println("Error in input");
+            System.err.println("Error in input");
             return;
         }
         MyCritter mc = new MyCritter(cs.getCode());
@@ -117,7 +117,7 @@ class test {
         Interpreter i = new Interpreter();
         CritterSpecies cs = i.loadSpecies(filepath);
         if(cs==null) {
-            System.out.println("Error in input");
+            System.err.println("Error in input");
             return;
         }
         MyCritter mc = new MyCritter(cs.getCode());
