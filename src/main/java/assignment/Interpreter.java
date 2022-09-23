@@ -1,6 +1,7 @@
 package assignment;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,12 +29,15 @@ public class Interpreter implements CritterInterpreter {
 
 		String name;
 		ArrayList<String> instructions = new ArrayList<>();
+		File file = new File(filename);
+
+		// check for empty file
+		if (file.length() == 0) {
+			return null;
+		}
 
 		// read name
 		name = reader.readLine();
-		if (name == null || name.length() == 0) {
-			return null;
-		}
 
 		// while blank line or end of file not encountered, read in instructions
 		// temp stores every read line
@@ -45,6 +49,10 @@ public class Interpreter implements CritterInterpreter {
 			} else {
 				return null;
 			}
+		}
+		// blank line after name, instructions array is empty
+		if (instructions.size() == 0) {
+			return null;
 		}
 		return new CritterSpecies(name, instructions);
 	}

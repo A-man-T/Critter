@@ -11,7 +11,8 @@ public class InstructionSwitch {
                 return;
             }
             // current is the current line in the instruction code
-            String[] current = ((String) c.getCode().get(i - 1)).split(" ");
+            String[] current = ((String) c.getCode().get(i - 1)).trim().split("\\s+");
+
             // current[0] is the command name, remaining indices are the other parameters
             switch (current[0]) {
                 case "hop" -> {

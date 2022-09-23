@@ -1,10 +1,13 @@
 package assignment;
 
+import java.util.Arrays;
+
 // input validation at compile time
 public class InstructionCheck {
     // checks if the input command is in the list of possible commands (rejects strings that are not commands).
     public static boolean CompileInstructionCheck(String s) {
-        String[] command = (s.split(" "));
+        String[] command = (s.trim().split("\\s+"));
+
         if (command[0].equals("hop")) {
             return true;
         }
@@ -77,7 +80,7 @@ public class InstructionCheck {
     // checks all the parameters (numbers)
     // makes sure every instruction has the correct number of following arguments
     public static boolean NumChecks(String s) {
-        String[] command = (s.split(" "));
+        String[] command = (s.trim().split("\\s+"));
         if (command[0].equals("hop")) {
             if (command.length != 1) {
                 return false;
