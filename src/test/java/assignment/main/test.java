@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class test {
     @Test
-    void testCommands() throws IOException {
+    void baseTestCode() throws IOException {
         Interpreter i = new Interpreter();
        CritterSpecies cs = i.loadSpecies("species/my2.cri");
        MyCritter mc = new MyCritter(cs.getCode());
@@ -26,7 +26,7 @@ class test {
        }
     }
     @Test
-    //This method also tests loadspecies but it didn't have to
+    //This method no longer tests loadspecies
     void checkInerpreter() throws IOException {
         //set up MyCritter
         String filepath = "species/my2.cri";
@@ -38,6 +38,8 @@ class test {
         }
         MyCritter mc = new MyCritter(cs.getCode());
         //create cut Instructions
+        ArrayList<String> parsedinstructions = (ArrayList<String>) mc.code;
+        /*
         ArrayList<String> parsedinstructions = new ArrayList<>();
         List<String> list = Files.readAllLines(new File(filepath).toPath(), Charset.defaultCharset() );
         for (String str: list)
@@ -50,9 +52,12 @@ class test {
                 break;
             }
         }
+         go to cut below
+         */
         ArrayList<String> cutInstructions = new ArrayList<>();
+
         String[] current;
-        for(int index =0; index<cut;index++) {
+        for(int index =0; index<parsedinstructions.size();index++) {
             current = ((parsedinstructions.get(index).split(" ")));
             if((current[0].equals("go")))
                 continue;
