@@ -113,8 +113,8 @@ class test {
             i.executeCritter(mc);
         }
 
-        System.out.println(nums);
-        System.out.println(mc.registers);
+        //System.out.println(nums);
+        //System.out.println(mc.registers);
         //System.out.println(cutInstructions);
         //System.out.println(mc.instructions);
         assertEquals(mc.instructions,cutInstructions);

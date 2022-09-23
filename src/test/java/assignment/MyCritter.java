@@ -42,7 +42,7 @@ public class MyCritter implements Critter{
     public void setReg(int i, int i1) {
         instructions.add("setReg");
         registers.add(i);
-        registers.add(i1);
+
 
     }
 
