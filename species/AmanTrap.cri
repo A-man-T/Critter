@@ -1,6 +1,7 @@
 AmanTrap
-inc r1
-inc r1
+write r1 1
+hop
+go r1
 
 The flytrap sits in one place and spins.
 It infects anything which comes in front of it.
