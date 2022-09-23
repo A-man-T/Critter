@@ -6,7 +6,7 @@ import java.util.List;
 public class MyCritter implements Critter{
     public ArrayList<String> instructions = new ArrayList<>();
     public List code;
-    public ArrayList<String> registers = new ArrayList<>();
+    public ArrayList<Integer> registers = new ArrayList<>();
     public int i=1;
 
     public MyCritter(List i){
@@ -34,12 +34,15 @@ public class MyCritter implements Critter{
     @Override
     public int getReg(int i) {
         instructions.add("getReg");
+        registers.add(i);
         return 0;
     }
 
     @Override
     public void setReg(int i, int i1) {
         instructions.add("setReg");
+        registers.add(i);
+        registers.add(i1);
 
     }
 
@@ -81,18 +84,21 @@ public class MyCritter implements Critter{
     @Override
     public void infect(int i) {
         instructions.add("infect");
+        registers.add(i);
 
     }
 
     @Override
     public int getCellContent(int i) {
         instructions.add("getCellContent");
+        registers.add(i);
         return 0;
     }
 
     @Override
     public int getOffAngle(int i) {
         instructions.add("getOffAngle");
+        registers.add(i);
         return 0;
     }
 
