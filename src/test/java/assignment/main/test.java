@@ -145,7 +145,7 @@ class test {
     @Test
     void testLoadSpecies() throws IOException {
         //set up MyCritter
-        String filepath = "species/AmanTrap.cri";
+        String filepath = "species/my2.cri";
         Interpreter i = new Interpreter();
         CritterSpecies cs = i.loadSpecies(filepath);
         if(cs==null) {
@@ -180,7 +180,7 @@ class test {
     @Test
     void inputValidation() throws IOException {
         Interpreter i = new Interpreter();
-        CritterSpecies cs = i.loadSpecies("species/AmanTrap.cri");
+        CritterSpecies cs = i.loadSpecies("species/my2.cri");
         //MyCritter mc = new MyCritter(cs.getCode());
         //assertEquals(cs,null);
 
