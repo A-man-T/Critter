@@ -75,7 +75,7 @@ public class InstructionCheck {
     }
     
     // checks all the parameters (numbers)
-    // makes sure every function has the correct number of following arguments
+    // makes sure every instruction has the correct number of following arguments
     public static boolean NumChecks(String s) {
         String[] command = (s.split(" "));
         if (command[0].equals("hop")) {
