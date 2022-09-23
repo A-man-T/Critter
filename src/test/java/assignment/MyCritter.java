@@ -5,8 +5,10 @@ import java.util.List;
 
 public class MyCritter implements Critter{
     public ArrayList<String> instructions = new ArrayList<>();
-    private List code;
-    private int i=1;
+    public List code;
+    public ArrayList<String> registers = new ArrayList<>();
+    public int i=1;
+
     public MyCritter(List i){
         this.code = i;
 
