@@ -136,37 +136,37 @@ public class InstructionSwitch {
                 }
                 case "write" -> {
 
-                    c.setReg(Integer.parseInt(noWhitespace(current[1])), Integer.parseInt(current[2]));
+                    c.setReg(Integer.parseInt(onlyDigits(current[1])), Integer.parseInt(current[2]));
                     i++;
                     c.setNextCodeLine(i);
                 }
                 case "add" -> {
 
-                    c.setReg(Integer.parseInt(noWhitespace(current[1])), c.getReg(Integer.parseInt(noWhitespace(current[1]))) + c.getReg(Integer.parseInt(noWhitespace(current[2]))));
+                    c.setReg(Integer.parseInt(onlyDigits(current[1])), c.getReg(Integer.parseInt(onlyDigits(current[1]))) + c.getReg(Integer.parseInt(onlyDigits(current[2]))));
                     i++;
                     c.setNextCodeLine(i);
                 }
                 case "sub" -> {
 
-                    c.setReg(Integer.parseInt(noWhitespace(current[1])), c.getReg(Integer.parseInt(noWhitespace(current[1]))) - c.getReg(Integer.parseInt(noWhitespace(current[2]))));
+                    c.setReg(Integer.parseInt(onlyDigits(current[1])), c.getReg(Integer.parseInt(onlyDigits(current[1]))) - c.getReg(Integer.parseInt(onlyDigits(current[2]))));
                     i++;
                     c.setNextCodeLine(i);
                 }
                 case "inc" -> {
 
-                    c.setReg(Integer.parseInt(noWhitespace(current[1])), c.getReg(Integer.parseInt(noWhitespace(current[1]))) + 1);
+                    c.setReg(Integer.parseInt(onlyDigits(current[1])), c.getReg(Integer.parseInt(onlyDigits(current[1]))) + 1);
                     i++;
                     c.setNextCodeLine(i);
                 }
                 case "dec" -> {
 
-                    c.setReg(Integer.parseInt(noWhitespace(current[1])), c.getReg(Integer.parseInt(noWhitespace(current[1]))) - 1);
+                    c.setReg(Integer.parseInt(onlyDigits(current[1])), c.getReg(Integer.parseInt(onlyDigits(current[1]))) - 1);
                     i++;
                     c.setNextCodeLine(i);
                 }
                 case "iflt" -> {
 
-                    if (c.getReg(Integer.parseInt(noWhitespace(current[1]))) < c.getReg(Integer.parseInt(noWhitespace(current[2])))) {
+                    if (c.getReg(Integer.parseInt(onlyDigits(current[1]))) < c.getReg(Integer.parseInt(onlyDigits(current[2])))) {
                         c.setNextCodeLine(jumpType(current[3], i, c));
                         ;
                     } else {
@@ -177,7 +177,7 @@ public class InstructionSwitch {
                 }
                 case "ifeq" -> {
 
-                    if (c.getReg(Integer.parseInt(noWhitespace(current[1]))) == c.getReg(Integer.parseInt(noWhitespace(current[2])))) {
+                    if (c.getReg(Integer.parseInt(onlyDigits(current[1]))) == c.getReg(Integer.parseInt(onlyDigits(current[2])))) {
                         c.setNextCodeLine(jumpType(current[3], i, c));
                         ;
                     } else {
@@ -188,7 +188,7 @@ public class InstructionSwitch {
                 }
                 case "ifgt" -> {
 
-                    if (c.getReg(Integer.parseInt(noWhitespace(current[1]))) > c.getReg(Integer.parseInt(noWhitespace(current[2])))) {
+                    if (c.getReg(Integer.parseInt(onlyDigits(current[1]))) > c.getReg(Integer.parseInt(onlyDigits(current[2])))) {
                         c.setNextCodeLine(jumpType(current[3], i, c));
                         ;
                     } else {
@@ -220,7 +220,8 @@ public class InstructionSwitch {
         }
     }
 
-    private static String noWhitespace(String s) {
+    // returns the digits of a parameter if the parameter is not already an integer (starts w/ r,+,-).
+    private static String onlyDigits(String s) {
         if (!Character.isDigit(s.charAt(0))) {
             return s.substring(1);
         }

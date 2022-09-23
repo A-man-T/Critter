@@ -1,6 +1,8 @@
 package assignment;
 
+// input validation at compile time
 public class InstructionCheck {
+    // checks if the input command is in the list of possible commands (rejects strings that are not commands).
     public static boolean CompileInstructionCheck(String s) {
         String[] command = (s.split(" "));
         if (command[0].equals("hop")) {
@@ -71,7 +73,9 @@ public class InstructionCheck {
         }
         return false;
     }
-
+    
+    // checks all the parameters (numbers)
+    // makes sure every function has the correct number of following arguments
     public static boolean NumChecks(String s) {
         String[] command = (s.split(" "));
         if (command[0].equals("hop")) {
@@ -83,7 +87,7 @@ public class InstructionCheck {
         if (command[0].equals("infect")) {
             if (command.length == 2) {
                 try {
-                    Integer.parseInt(noWhitespace(command[1]));
+                    Integer.parseInt(onlyDigits(command[1]));
                 } catch (NumberFormatException e) {
                     return false;
                 }
@@ -100,8 +104,8 @@ public class InstructionCheck {
                 return false;
             }
             try {
-                Integer.parseInt(noWhitespace(command[1]));
-                Integer.parseInt(noWhitespace(command[2]));
+                Integer.parseInt(onlyDigits(command[1]));
+                Integer.parseInt(onlyDigits(command[2]));
             } catch (NumberFormatException e) {
                 return false;
             }
@@ -117,8 +121,8 @@ public class InstructionCheck {
                 return false;
             }
             try {
-                Integer.parseInt(noWhitespace(command[1]));
-                Integer.parseInt(noWhitespace(command[2]));
+                Integer.parseInt(onlyDigits(command[1]));
+                Integer.parseInt(onlyDigits(command[2]));
             } catch (NumberFormatException e) {
                 return false;
             }
@@ -134,7 +138,7 @@ public class InstructionCheck {
                 return false;
             }
             try {
-                Integer.parseInt(noWhitespace(command[1]));
+                Integer.parseInt(onlyDigits(command[1]));
             } catch (NumberFormatException e) {
                 return false;
             }
@@ -147,7 +151,7 @@ public class InstructionCheck {
                 return false;
             }
             try {
-                Integer.parseInt(noWhitespace(command[1]));
+                Integer.parseInt(onlyDigits(command[1]));
             } catch (NumberFormatException e) {
                 return false;
             }
@@ -160,7 +164,7 @@ public class InstructionCheck {
                 return false;
             }
             try {
-                Integer.parseInt(noWhitespace(command[1]));
+                Integer.parseInt(onlyDigits(command[1]));
             } catch (NumberFormatException e) {
                 return false;
             }
@@ -173,9 +177,9 @@ public class InstructionCheck {
                 return false;
             }
             try {
-                Integer.parseInt(noWhitespace(command[1]));
-                Integer.parseInt(noWhitespace(command[2]));
-                Integer.parseInt(noWhitespace(command[3]));
+                Integer.parseInt(onlyDigits(command[1]));
+                Integer.parseInt(onlyDigits(command[2]));
+                Integer.parseInt(onlyDigits(command[3]));
             } catch (NumberFormatException e) {
                 return false;
             }
@@ -191,8 +195,8 @@ public class InstructionCheck {
                 return false;
             }
             try {
-                Integer.parseInt(noWhitespace(command[1]));
-                Integer.parseInt(noWhitespace(command[2]));
+                Integer.parseInt(onlyDigits(command[1]));
+                Integer.parseInt(onlyDigits(command[2]));
             } catch (NumberFormatException e) {
                 return false;
             }
@@ -208,8 +212,8 @@ public class InstructionCheck {
                 return false;
             }
             try {
-                Integer.parseInt(noWhitespace(command[1]));
-                Integer.parseInt(noWhitespace(command[2]));
+                Integer.parseInt(onlyDigits(command[1]));
+                Integer.parseInt(onlyDigits(command[2]));
             } catch (NumberFormatException e) {
                 return false;
             }
@@ -225,8 +229,8 @@ public class InstructionCheck {
                 return false;
             }
             try {
-                Integer.parseInt(noWhitespace(command[1]));
-                Integer.parseInt(noWhitespace(command[2]));
+                Integer.parseInt(onlyDigits(command[1]));
+                Integer.parseInt(onlyDigits(command[2]));
             } catch (NumberFormatException e) {
                 return false;
             }
@@ -236,8 +240,8 @@ public class InstructionCheck {
                 return false;
             }
             try {
-                Integer.parseInt(noWhitespace(command[1]));
-                Integer.parseInt(noWhitespace(command[2]));
+                Integer.parseInt(onlyDigits(command[1]));
+                Integer.parseInt(onlyDigits(command[2]));
             } catch (NumberFormatException e) {
                 return false;
             }
@@ -247,8 +251,8 @@ public class InstructionCheck {
                 return false;
             }
             try {
-                Integer.parseInt(noWhitespace(command[1]));
-                Integer.parseInt(noWhitespace(command[2]));
+                Integer.parseInt(onlyDigits(command[1]));
+                Integer.parseInt(onlyDigits(command[2]));
             } catch (NumberFormatException e) {
                 return false;
             }
@@ -258,7 +262,7 @@ public class InstructionCheck {
                 return false;
             }
             try {
-                Integer.parseInt(noWhitespace(command[1]));
+                Integer.parseInt(onlyDigits(command[1]));
             } catch (NumberFormatException e) {
                 return false;
             }
@@ -268,7 +272,7 @@ public class InstructionCheck {
                 return false;
             }
             try {
-                Integer.parseInt(noWhitespace(command[1]));
+                Integer.parseInt(onlyDigits(command[1]));
             } catch (NumberFormatException e) {
                 return false;
             }
@@ -278,9 +282,9 @@ public class InstructionCheck {
                 return false;
             }
             try {
-                Integer.parseInt(noWhitespace(command[1]));
-                Integer.parseInt(noWhitespace(command[2]));
-                Integer.parseInt(noWhitespace(command[3]));
+                Integer.parseInt(onlyDigits(command[1]));
+                Integer.parseInt(onlyDigits(command[2]));
+                Integer.parseInt(onlyDigits(command[3]));
             } catch (NumberFormatException e) {
                 return false;
             }
@@ -293,9 +297,9 @@ public class InstructionCheck {
                 return false;
             }
             try {
-                Integer.parseInt(noWhitespace(command[1]));
-                Integer.parseInt(noWhitespace(command[2]));
-                Integer.parseInt(noWhitespace(command[3]));
+                Integer.parseInt(onlyDigits(command[1]));
+                Integer.parseInt(onlyDigits(command[2]));
+                Integer.parseInt(onlyDigits(command[3]));
             } catch (NumberFormatException e) {
                 return false;
             }
@@ -308,9 +312,9 @@ public class InstructionCheck {
                 return false;
             }
             try {
-                Integer.parseInt(noWhitespace(command[1]));
-                Integer.parseInt(noWhitespace(command[2]));
-                Integer.parseInt(noWhitespace(command[3]));
+                Integer.parseInt(onlyDigits(command[1]));
+                Integer.parseInt(onlyDigits(command[2]));
+                Integer.parseInt(onlyDigits(command[3]));
             } catch (NumberFormatException e) {
                 return false;
             }
@@ -323,7 +327,7 @@ public class InstructionCheck {
                 return false;
             }
             try {
-                Integer.parseInt(noWhitespace(command[1]));
+                Integer.parseInt(onlyDigits(command[1]));
             } catch (NumberFormatException e) {
                 return false;
             }
@@ -334,19 +338,23 @@ public class InstructionCheck {
         return true;
     }
 
-    private static String noWhitespace(String s) {
+    // returns only the digits of a string if it starts with a non-digit char (r,+,-)
+    private static String onlyDigits(String s) {
         if (!Character.isDigit(s.charAt(0))) {
             return s.substring(1);
         }
         return s;
     }
 
+    // check if an argument is a register
     private static boolean isRegister(String s) {
         return s.charAt(0) == 'r';
     }
+
+    // check if a register is valid (the register number if 1-10, inclusive
     private static boolean validRegister(String s) {
         if (isRegister(s)) {
-            if (Integer.parseInt(noWhitespace(s)) > 10 || Integer.parseInt(noWhitespace(s)) < 1) {
+            if (Integer.parseInt(onlyDigits(s)) > 10 || Integer.parseInt(onlyDigits(s)) < 1) {
                 return false;
             }
         }
