@@ -91,6 +91,9 @@ public class InstructionCheck {
                     return false;
                 }
             }
+            if (command.length > 1) {
+                return false;
+            }
         }
         if (command[0].equals("ifally")) {
             if (3 != command.length) {

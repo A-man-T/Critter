@@ -17,22 +17,27 @@ public class Interpreter implements CritterInterpreter {
 
 	public void executeCritter(Critter c) {
 
+		// calls helper method containing switch
 		InstructionSwitch.executeInstruction(c);
 
 	}
 
 	public CritterSpecies loadSpecies(String filename) throws IOException {
+		// read in .cri file.
 		BufferedReader reader = new BufferedReader(new FileReader(filename));
 
 		String name;
 		ArrayList<String> instructions = new ArrayList<>();
 
+		// read name
 		name = reader.readLine();
 		if (name == null || name.length() == 0) {
 			return null;
 		}
-		String temp = reader.readLine();
 
+		// while blank line or end of file not encountered, read in instructions
+		// temp stores every read line
+		String temp = reader.readLine();
 		while ((temp != null)&&(!Objects.equals(temp, ""))) {
 			if (InstructionCheck.CompileInstructionCheck(temp) && InstructionCheck.NumChecks(temp)) {
 				instructions.add(temp);

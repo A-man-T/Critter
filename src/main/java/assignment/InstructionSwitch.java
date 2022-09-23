@@ -1,14 +1,18 @@
 package assignment;
 
 public class InstructionSwitch {
+    // switch to choose actions based on command string
     public static void executeInstruction(Critter c) {
-
+        // iterative processor for action and non-action based turns
+        // returns used for action commands and break used for non-action commands.
         while (true) {
             int i = c.getNextCodeLine();
             if (i > c.getCode().size() || i < 1) {
                 return;
             }
+            // current is the current line in the instruction code
             String[] current = ((String) c.getCode().get(i - 1)).split(" ");
+            // current[0] is the command name, remaining indices are the other parameters
             switch (current[0]) {
                 case "hop" -> {
 
@@ -193,20 +197,24 @@ public class InstructionSwitch {
                         ;
                     }
                 }
+                // by input validation, this case is never reached.
                 default -> {
-                    
                 }
             }
         }
     }
 
+    // method to check the 'n' value after a command to see what type of jump it is.
     private static int jumpType(String s, int i, Critter c) {
+        // relative jump
         if (s.charAt(0) == '+' || s.charAt(0) == '-') {
             return i + Integer.parseInt(s);
         }
+        // register value
         else if (s.charAt(0) == 'r') {
             return c.getReg(Integer.parseInt(s.substring(1)));
         }
+        // absolute jump
         else {
             return Integer.parseInt(s);
         }
