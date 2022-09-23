@@ -81,7 +81,7 @@ public class InstructionCheck {
         }
 
         if (command[0].equals("infect")) {
-            if (command.length != 1) {
+            if (command.length == 2) {
                 try {
                     Integer.parseInt(noWhitespace(command[1]));
                 } catch (NumberFormatException e) {
@@ -91,7 +91,7 @@ public class InstructionCheck {
                     return false;
                 }
             }
-            if (command.length > 1) {
+            if (command.length > 2) {
                 return false;
             }
         }
