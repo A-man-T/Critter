@@ -26,16 +26,17 @@ class test {
        }
     }
     @Test
-    void checkCommands() throws IOException {
+    //This method also tests loadspecies but it didn't have to
+    void checkInerpreter() throws IOException {
         //set up MyCritter
-        String filepath = "species/AmanTrap.cri";
+        String filepath = "species/my2.cri";
         Interpreter i = new Interpreter();
         CritterSpecies cs = i.loadSpecies(filepath);
         if(cs==null) {
+            System.out.println("Error in input");
             return;
         }
         MyCritter mc = new MyCritter(cs.getCode());
-
         //create cut Instructions
         ArrayList<String> parsedinstructions = new ArrayList<>();
         List<String> list = Files.readAllLines(new File(filepath).toPath(), Charset.defaultCharset() );
@@ -98,14 +99,43 @@ class test {
             i.executeCritter(mc);
         }
 
-        System.out.println(cutInstructions);
-        System.out.println(mc.instructions);
+        //System.out.println(cutInstructions);
+        //System.out.println(mc.instructions);
         assertEquals(mc.instructions,cutInstructions);
 
     }
 
     @Test
-    void checkRegisters() throws IOException {
+    void testLoadSpecies() throws IOException {
+        //set up MyCritter
+        String filepath = "species/AmanTrap.cri";
+        Interpreter i = new Interpreter();
+        CritterSpecies cs = i.loadSpecies(filepath);
+        if(cs==null) {
+            System.out.println("Error in input");
+            return;
+        }
+        MyCritter mc = new MyCritter(cs.getCode());
+        ArrayList<String> parsedinstructions = new ArrayList<>();
+        List<String> list = Files.readAllLines(new File(filepath).toPath(), Charset.defaultCharset() );
+        for (String str: list)
+            parsedinstructions.add(str);
+        parsedinstructions.remove(0);
+        int cut = parsedinstructions.size();
+        for(int index =0; index<parsedinstructions.size();index++) {
+            if (parsedinstructions.get(index).equals("")) {
+                cut = index;
+                break;
+            }
+        }
+        ArrayList<String> cutInstructions = new ArrayList<>();
+        for(int i1=0;i1<cut;i1++)
+            cutInstructions.add(parsedinstructions.get(i1));
+
+        //System.out.println(mc.code);
+        //System.out.println(cutInstructions);
+
+        assertEquals(mc.code,cutInstructions);
 
 
     }
